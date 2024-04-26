@@ -21,10 +21,12 @@ who();
 let counter = 0;
 
 blockItem.forEach((elm) => {
+  let clicked = false;
   elm.addEventListener("click", () => {
     if (
       !elm.classList.contains("circle") &&
-      !elm.classList.contains("Player 2 to move")
+      !elm.classList.contains("krest") &&
+      !clicked 
     ) {
       elm.classList.add(step);
       if (step === "krest") {
@@ -33,6 +35,7 @@ blockItem.forEach((elm) => {
       if (step === "circle") {
         elm.innerText = "O";
       }
+      clicked = true; 
       counter++;
       who();
       circleWin();
@@ -41,7 +44,6 @@ blockItem.forEach((elm) => {
     }
   });
 });
-
 let win = [[0, 1, 2],[0, 4, 8],[2, 4, 6],[3, 4, 5],[6, 7, 8],[0, 3, 6],[1, 4, 7],[2, 5, 8],];
 
 let circleWin = () => {
